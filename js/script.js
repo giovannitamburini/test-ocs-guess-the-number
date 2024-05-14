@@ -1,3 +1,4 @@
+
 // variabile in cui salverò il numero da indovinare
 let winningNumber;
 
@@ -7,6 +8,12 @@ let winningNumber;
 let btnStart = document.getElementById('btn-start');
 // container input
 let gameContainer = document.getElementById('game-container');
+// input utente
+let inputNumber = document.getElementById('input-number');
+// btn per giocare
+let btnPlay = document.getElementById('btn-play');
+
+
 
 
 
@@ -21,13 +28,21 @@ btnStart.addEventListener("click", function(){
 
     // nascondo il pulsante per dare via al gioco
     btnStart.classList.add('d-none');
-    
+
     // mostro il gioco
     gameContainer.classList.remove('d-none');
     gameContainer.classList.add('d-flex');
 })
 
 
+// evento click al btn per giocare
+btnPlay.addEventListener("click", function(){
+
+    // trasformo in intero il numero inserito
+    let userNumber = parseInt(inputNumber.value);
+
+    console.log(userNumber);
+})
 
 
 
