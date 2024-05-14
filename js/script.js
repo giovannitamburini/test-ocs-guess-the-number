@@ -5,6 +5,8 @@ let winningNumber;
 
 // btn per entrare nel gioco
 let btnStart = document.getElementById('btn-start');
+// container input
+let gameContainer = document.getElementById('game-container');
 
 
 
@@ -16,6 +18,13 @@ btnStart.addEventListener("click", function(){
     winningNumber = generateRandomNumber(0, 100);
 
     console.log(winningNumber);
+
+    // nascondo il pulsante per dare via al gioco
+    btnStart.classList.add('d-none');
+    
+    // mostro il gioco
+    gameContainer.classList.remove('d-none');
+    gameContainer.classList.add('d-flex');
 })
 
 
