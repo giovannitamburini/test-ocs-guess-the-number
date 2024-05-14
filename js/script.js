@@ -1,6 +1,8 @@
 
 // variabile in cui salverò il numero da indovinare
 let winningNumber;
+// variabile in cui salvo la correttezza del numero inserito dall'utente
+let isNumber = false;
 
 
 
@@ -42,6 +44,11 @@ btnPlay.addEventListener("click", function(){
     let userNumber = parseInt(inputNumber.value);
 
     console.log(userNumber);
+
+    // controllo sull'inserimento dell'utente
+    isNumber = validateNumberInputField(userNumber);
+
+    console.log(isNumber);
 })
 
 
@@ -54,4 +61,21 @@ btnPlay.addEventListener("click", function(){
 function generateRandomNumber(min, max){
 
     return Math.ceil(Math.random() * (max - min) + min);
+}
+
+
+// funzione che controlla se l'input inserito è corretto:
+// - sia un numero
+// - compreso tra 1 e 100
+function validateNumberInputField(inputValue) {
+
+    // se è un numero, compreso tra 1 e 100
+    if( !isNaN(inputValue) && inputValue >= 1 && inputValue <= 100 ) {
+
+        return true;
+      
+    } else {
+
+        return false;
+    }
 }
