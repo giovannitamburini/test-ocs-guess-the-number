@@ -3,6 +3,8 @@
 let winningNumber;
 // variabile in cui salvo la correttezza del numero inserito dall'utente
 let isNumber = false;
+// variabile in cui salvo l'esito della comparazione tra il numero utente e il numero vincente
+let response;
 
 
 
@@ -26,7 +28,7 @@ btnStart.addEventListener("click", function(){
     // salvo il numero casuale
     winningNumber = generateRandomNumber(0, 100);
 
-    console.log(winningNumber);
+    console.log("N vincente: " + winningNumber);
 
     // nascondo il pulsante per dare via al gioco
     btnStart.classList.add('d-none');
@@ -43,12 +45,17 @@ btnPlay.addEventListener("click", function(){
     // trasformo in intero il numero inserito
     let userNumber = parseInt(inputNumber.value);
 
-    console.log(userNumber);
+    console.log("N utente: " + userNumber);
 
     // controllo sull'inserimento dell'utente
     isNumber = validateNumberInputField(userNumber);
 
-    console.log(isNumber);
+    if (isNumber){
+
+        response = compareNumbers(userNumber, winningNumber);
+
+        console.log(response);
+    }
 })
 
 
@@ -77,5 +84,25 @@ function validateNumberInputField(inputValue) {
     } else {
 
         return false;
+    }
+}
+
+
+// funzione per comparare i numeri
+function compareNumbers(numUser, winNum){
+
+    console.log(numUser, winNum);
+
+    if(numUser == winNum){
+
+        return 'uguale';
+
+    } else if (numUser > winNum ){
+
+        return 'maggiore';
+
+    } else {
+
+        return 'minore';
     }
 }
