@@ -52,28 +52,36 @@ btnPlay.addEventListener("click", function(){
     // controllo sull'inserimento dell'utente
     isNumber = validateNumberInputField(userNumber);
 
+    // svuoto l'input dopo l'inserimento
+    inputNumber.value = null;
+
+    // caso inserimento corretto
     if (isNumber){
 
         response = compareNumbers(userNumber, winningNumber);
 
         console.log(response);
 
+        // caso maggiore
         if (response == 'maggiore'){
 
             responseMessage.textContent = 'Il numero inserito è maggiore del numero vincente, ritenta';
             responseMessage.style.color = "blue";
 
+        // caso minore
         } else if (response == 'minore') {
 
             responseMessage.textContent = 'Il numero inserito è minore del numero vincente, ritenta';
             responseMessage.style.color = "blue";
 
+        // caso uguale
         } else {
             
             responseMessage.textContent = 'Hai vinto! hai indovinato il numero in x tentativi';
             responseMessage.style.color = "green";
         }
-
+    
+    // caso inserimento errato
     } else {
         
         responseMessage.textContent = 'Devi inserire un numero valido';
