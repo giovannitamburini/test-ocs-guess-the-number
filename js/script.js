@@ -16,6 +16,8 @@ let gameContainer = document.getElementById('game-container');
 let inputNumber = document.getElementById('input-number');
 // btn per giocare
 let btnPlay = document.getElementById('btn-play');
+// contenitore responso gioco
+let responseMessage = document.getElementById('game-response');
 
 
 
@@ -55,6 +57,27 @@ btnPlay.addEventListener("click", function(){
         response = compareNumbers(userNumber, winningNumber);
 
         console.log(response);
+
+        if (response == 'maggiore'){
+
+            responseMessage.textContent = 'Il numero inserito è maggiore del numero vincente, ritenta';
+            responseMessage.style.color = "blue";
+
+        } else if (response == 'minore') {
+
+            responseMessage.textContent = 'Il numero inserito è minore del numero vincente, ritenta';
+            responseMessage.style.color = "blue";
+
+        } else {
+            
+            responseMessage.textContent = 'Hai vinto! hai indovinato il numero in x tentativi';
+            responseMessage.style.color = "green";
+        }
+
+    } else {
+        
+        responseMessage.textContent = 'Devi inserire un numero valido';
+        responseMessage.style.color = "red";
     }
 })
 
