@@ -27,13 +27,16 @@ let responseMessage = document.getElementById('game-response');
 // evento click al bottone per dare via al gioco
 btnStart.addEventListener("click", function(){
 
+    // resetto il contenuto del responso in caso di ripetizione del gioco
+    responseMessage.textContent = "";
+
     // salvo il numero casuale
     winningNumber = generateRandomNumber(0, 100);
 
     console.log("N vincente: " + winningNumber);
 
     // nascondo il pulsante per dare via al gioco
-    btnStart.classList.add('d-none');
+    btnStart.style.display = 'none';
 
     // mostro il gioco
     gameContainer.classList.remove('d-none');
@@ -76,6 +79,14 @@ btnPlay.addEventListener("click", function(){
 
         // caso uguale
         } else {
+
+            // nascondo il gioco in caso di vincita
+            gameContainer.classList.remove('d-flex');
+            gameContainer.classList.add('d-none');
+
+            // rimostro il btn per poter ripetere la partita
+            btnStart.textContent = "rigioca";
+            btnStart.style.display = 'block';
             
             responseMessage.textContent = 'Hai vinto! hai indovinato il numero in x tentativi';
             responseMessage.style.color = "green";
