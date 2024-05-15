@@ -5,6 +5,8 @@ let winningNumber;
 let isNumber = false;
 // variabile in cui salvo l'esito della comparazione tra il numero utente e il numero vincente
 let response;
+// contatore tentativi
+let countGame = 0;
 
 
 
@@ -29,6 +31,9 @@ btnStart.addEventListener("click", function(){
 
     // resetto il contenuto del responso in caso di ripetizione del gioco
     responseMessage.textContent = "";
+
+    // in caso di rigioco resetto il contatore
+    countGame = 0;
 
     // salvo il numero casuale
     winningNumber = generateRandomNumber(0, 100);
@@ -61,6 +66,9 @@ btnPlay.addEventListener("click", function(){
     // caso inserimento corretto
     if (isNumber){
 
+        // aumento il counter dei tentativi solo nel caso di un corretto inserimento
+        countGame++;
+
         response = compareNumbers(userNumber, winningNumber);
 
         console.log(response);
@@ -88,7 +96,7 @@ btnPlay.addEventListener("click", function(){
             btnStart.textContent = "rigioca";
             btnStart.style.display = 'block';
             
-            responseMessage.textContent = 'Hai vinto! hai indovinato il numero in x tentativi';
+            responseMessage.textContent = 'Hai vinto! hai indovinato il numero in ' + countGame + ' tentativi';
             responseMessage.style.color = "green";
         }
     
